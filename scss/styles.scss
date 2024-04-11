@@ -20,6 +20,9 @@ $header-bg: #2e80ce;
     display: inline-block;
     border-radius: 50%;
 }
+%text-center-base {
+    text-align: center;
+}
 
 @mixin flex-center($flex: flex, $justify: null) {
     display: $flex;
@@ -52,6 +55,22 @@ $header-bg: #2e80ce;
     height: $height;
     border-radius: $border-radius;
     object-fit: cover;
+}
+
+@mixin section-heading {
+    color: #10375c;
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+@mixin section-desc {
+    margin-top: 18px;
+    color: #575f66;
+    font-size: 1.8rem;
+    line-height: 1.67;
+    font-weight: 300;
 }
 
 /* Common */
@@ -249,5 +268,198 @@ a {
             @include image(210px, 410px);
             border-radius: 0px 6px 6px 0px;
         }
+    }
+}
+
+.service {
+    padding: 170px;
+
+    .section-heading {
+        @include section-heading;
+        @extend %text-center-base;
+    }
+
+    .section-desc {
+        @include section-desc;
+        @extend %text-center-base;
+        width: 468px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .service__row {
+        margin-top: 70px;
+        @include flex-center($justify: space-between);
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 22px;
+            width: 470px;
+            transition: 0.25s;
+
+            svg {
+                width: 60px;
+                height: 60px;
+            }
+
+            &__body {
+                margin-left: 19px;
+            }
+
+            &__heading {
+                color: #10375c;
+                font-size: 1.8rem;
+                font-weight: 600;
+            }
+
+            &__description {
+                margin-top: 8px;
+                color: #575f66;
+                font-size: 1.6rem;
+                font-weight: 300;
+                line-height: 1.75;
+            }
+
+            &:hover {
+                position: relative;
+                border-radius: 10px;
+                background: #fff;
+                box-shadow: 0px 14px 28px 0px rgba(0, 0, 0, 0.05);
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 33px;
+            @include btn;
+            text-align: center;
+            line-height: 60px;
+        }
+    }
+}
+
+/* Work */
+.work {
+    padding: 100px 0;
+    background: #f6fbff;
+
+    .section-heading {
+        @include section-heading;
+    }
+
+    .section-desc {
+        margin-top: 18px;
+        width: 468px;
+        @include desc;
+        color: #575f66;
+    }
+
+    .work__list {
+        margin-top: 70px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 30px;
+        transition: 0.25s ease;
+
+        .work-item {
+            padding: 44px;
+            border: 16px solid #eaf6ff;
+            border-radius: 4px;
+            background: #fff;
+
+            &__icon {
+                width: 72px;
+                height: 72px;
+                object-fit: cover;
+            }
+
+            &__heading {
+                margin-top: 18px;
+                color: #10375c;
+                font-size: 2.6rem;
+                font-weight: 600;
+                line-height: 1.38;
+            }
+
+            &__desc {
+                margin-top: 28px;
+                color: #575f66;
+                font-size: 1.6rem;
+                font-weight: 300;
+                line-height: 1.75;
+            }
+
+            .work_more {
+                display: inline-block;
+                margin-top: 18px;
+                color: #575f66;
+                font-size: 1.6rem;
+                font-weight: 300;
+                line-height: 1.75;
+            }
+
+            &:hover {
+                border-color: #2e80ce;
+                transform: translateY(-16px);
+
+                .work_more {
+                    color: #2e80ce;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+}
+
+/* Feature */
+.feature {
+    margin-top: 85px;
+    padding: 85px 0;
+
+    .inner {
+        @include flex-center;
+    }
+
+    &__media {
+        position: relative;
+        width: 48%;
+        padding: 0 30px 121px 0;
+    }
+
+    &_img {
+        position: relative;
+        width: 512px;
+        height: 370px;
+        border-radius: 6px;
+    }
+
+    &_img:last-child {
+        width: 332px;
+        height: 370px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    &__content {
+        margin-left: 188px;
+    }
+
+    .section-heading {
+        @include section-heading;
+    }
+
+    .section__desc {
+        margin-top: 18px;
+        @include section-desc;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 38px;
+        @include btn;
+        text-align: center;
+        line-height: 60px;
     }
 }
